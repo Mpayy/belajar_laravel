@@ -15,6 +15,8 @@
         <a href="{{ route('volumekubus.index') }}">Volume Kubus</a><hr>
         <a href="">Luas Permukaan Tabung</a><hr>
         <a href="{{ route('volumetabung.v_tabung') }}">Volume Tabung</a><hr>
+        <a href="{{ route('volumelimas.index') }}">Volume Limas Segi Empat</a><hr>
+        <a href="{{ route('pendaftaranpeserta.index') }}">Pendaftaran Peserta</a><hr>
     </nav>
 </body>
 </html>

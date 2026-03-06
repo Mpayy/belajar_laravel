@@ -9,7 +9,8 @@
 <body>
     <h2>Perhitungan</h2>
     <a href="{{ url('navbar') }}">Kembali</a>
-    <form action="{{ route('perhitungan.store') }}" method="post">
+    {{-- @dd($hasil) --}}
+    <form action="{{ route('perhitungan.index') }}" method="post">
         @csrf
         <input type="number" name="angka1" required><br>
         <select name="operator" id="" required>

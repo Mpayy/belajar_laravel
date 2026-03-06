@@ -8,6 +8,8 @@
 // delete = menghapus data
 
 use App\Http\Controllers\PerhitunganController;
+use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\VolumeLimasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,13 +30,14 @@ Route::get('luasPermukaanKubus',[PerhitunganController::class, "index"])->name('
 // Tampilan form perhitungan Volume Kubus
 Route::get('volumekubus',
 [PerhitunganController::class,
- "indexVolKubus" // ini nama functionnya
- ])->name('volumekubus.index');
+        "indexVolKubus" // ini nama functionnya
+    ]
+)->name('volumekubus.index');
 
 // Tampilan form perhitungan Volume Balok
 Route::get('volumetabung',
 [PerhitunganController::class,
- "v_tabung"
+        "indexVolTabung"
  ])->name('volumetabung.v_tabung');
 
 
@@ -46,3 +49,24 @@ Route::post('luasPermukaanKubus', [PerhitunganController::class, "storeLpKubus"]
 
 // Aksi perhitungan Volume Kubus
 Route::post('volumekubus', [PerhitunganController::class, "storeVolKubus"])->name('volumekubus.store');
+
+
+// get untuk menampilkan
+// Route::get('volumelimas', [VolumeLimasController::class, 'index'])->name('volumelimas.index');
+// Route::get('volumelimas/create', [VolumeLimasController::class, 'create'])->name('volumelimas.create');
+
+// // post untuk mengirim ke db
+// Route::post('volumelimas/store', [VolumeLimasController::class, 'store'])->name('volumelimas.store');
+
+// Route::get('volumelimas/edit/{id}', [VolumeLimasController::class, 'edit'])->name('volumelimas.edit');
+// Route::put('volumelimas/update/{id}', [VolumeLimasController::class, 'update'])->name('volumelimas.update');
+
+// Route::delete('volumelimas/delete/{id}', [VolumeLimasController::class, 'destroy'])->name('volumelimas.destroy');
+
+Route::resource('volumelimas', VolumeLimasController::class);
+
+
+// Tugas PendaftaranPeserta
+Route::get('pendaftaranpeserta', [PesertaController::class, 'index'])->name('pendaftaranpeserta.index');
+Route::get('pendaftaranpeserta/create', [PesertaController::class, 'create'])->name('pendaftaranpeserta.create');
+Route::post('pendaftaranpeserta/store', [PesertaController::class, 'store'])->name('pendaftaranpeserta.store');
