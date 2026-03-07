@@ -16,18 +16,18 @@ return new class extends Migration
             $table->string('jurusan');
             $table->string('gelombang');
             $table->string('nama_lengkap');
-            $table->integer('nik');
-            $table->integer('kartu_keluarga');
-            $table->string('jenis_kelamin');
+            $table->string('nik');
+            $table->string('kartu_keluarga');
+            $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('pendidikan_terakhir');
             $table->string('nama_sekolah');
             $table->string('kejuruan');
-            $table->integer('nomor_hp');
-            $table->string('email');
+            $table->string('nomor_hp');
+            $table->string('email')->nullable();
             $table->string('aktivitas_saat_ini');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

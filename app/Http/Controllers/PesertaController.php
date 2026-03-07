@@ -12,7 +12,8 @@ class PesertaController extends Controller
      */
     public function index()
     {
-        return view('pendaftaranpeserta.index');
+        $pendaftaranpeserta=PendaftaranPeserta::all();
+        return view('pendaftaranpeserta.index', compact('pendaftaranpeserta'));
     }
 
     /**
@@ -49,7 +50,7 @@ class PesertaController extends Controller
             'gelombang' => $gelombang,
             'nama_lengkap' => $nama_lengkap,
             'nik' => $nik,
-            'kk' => $kartu_keluarga,
+            'kartu_keluarga' => $kartu_keluarga,
             'jenis_kelamin' => $jenis_kelamin,
             'tempat_lahir' => $tempat_lahir,
             'tanggal_lahir' => $tanggal_lahir,
@@ -78,7 +79,8 @@ class PesertaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pendaftaranpeserta = PendaftaranPeserta::find($id);
+        return view('pendaftaranpeserta.edit', compact('pendaftaranpeserta'));
     }
 
     /**
@@ -86,7 +88,28 @@ class PesertaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pendaftaranpeserta = PendaftaranPeserta::find($id);
+
+        $pendaftaranpeserta->jurusan = $request->jurusan;
+        $pendaftaranpeserta->gelombang = $request->gelombang;
+        $pendaftaranpeserta->nama_lengkap = $request->nama_lengkap;
+        $pendaftaranpeserta->nik = $request->nik;
+        $pendaftaranpeserta->kartu_keluarga = $request->kartu_keluarga;
+        $pendaftaranpeserta->jenis_kelamin = $request->jenis_kelamin;
+        $pendaftaranpeserta->tempat_lahir = $request->tempat_lahir;
+        $pendaftaranpeserta->tanggal_lahir = $request->tanggal_lahir;
+        $pendaftaranpeserta->pendidikan_terakhir = $request->pendidikan_terakhir;
+        $pendaftaranpeserta->nama_sekolah = $request->nama_sekolah;
+        $pendaftaranpeserta->kejuruan = $request->kejuruan;
+        $pendaftaranpeserta->nomor_hp = $request->nomor_hp;
+        $pendaftaranpeserta->email = $request->email;
+        $pendaftaranpeserta->aktivitas_saat_ini = $request->aktivitas_saat_ini;
+        $pendaftaranpeserta->status = $request->status;
+        $pendaftaranpeserta->update();
+
+        return redirect()->route('pendaftaranpeserta.index');
+        
+
     }
 
     /**
@@ -94,6 +117,9 @@ class PesertaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pendaftaranpeserta = PendaftaranPeserta::find($id);
+        $pendaftaranpeserta->delete();
+
+        return redirect()->route('pendaftaranpeserta.index');
     }
 }

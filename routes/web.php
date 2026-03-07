@@ -70,3 +70,6 @@ Route::resource('volumelimas', VolumeLimasController::class);
 Route::get('pendaftaranpeserta', [PesertaController::class, 'index'])->name('pendaftaranpeserta.index');
 Route::get('pendaftaranpeserta/create', [PesertaController::class, 'create'])->name('pendaftaranpeserta.create');
 Route::post('pendaftaranpeserta/store', [PesertaController::class, 'store'])->name('pendaftaranpeserta.store');
+Route::get('pendaftaranpeserta/edit/{id}', [PesertaController::class, 'edit'])->name('pendaftaranpeserta.edit');
+Route::put('pendaftaranpeserta/update/{id}', [PesertaController::class, 'update'])->name('pendaftaranpeserta.update');
+Route::delete('pendaftaranpeserta/destroy/{id}', [PesertaController::class, 'destroy'])->name('pendaftaranpeserta.destroy');
