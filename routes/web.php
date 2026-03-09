@@ -7,14 +7,15 @@
 // put atau patch = merubah atau mengedit data
 // delete = menghapus data
 
+use App\Http\Controllers\BelajarController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\VolumeLimasController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('navbar', function () {
     return view('inc.navbar');
@@ -54,13 +55,10 @@ Route::post('volumekubus', [PerhitunganController::class, "storeVolKubus"])->nam
 // get untuk menampilkan
 // Route::get('volumelimas', [VolumeLimasController::class, 'index'])->name('volumelimas.index');
 // Route::get('volumelimas/create', [VolumeLimasController::class, 'create'])->name('volumelimas.create');
-
 // // post untuk mengirim ke db
 // Route::post('volumelimas/store', [VolumeLimasController::class, 'store'])->name('volumelimas.store');
-
 // Route::get('volumelimas/edit/{id}', [VolumeLimasController::class, 'edit'])->name('volumelimas.edit');
 // Route::put('volumelimas/update/{id}', [VolumeLimasController::class, 'update'])->name('volumelimas.update');
-
 // Route::delete('volumelimas/delete/{id}', [VolumeLimasController::class, 'destroy'])->name('volumelimas.destroy');
 
 Route::resource('volumelimas', VolumeLimasController::class);
@@ -73,3 +71,18 @@ Route::post('pendaftaranpeserta/store', [PesertaController::class, 'store'])->na
 Route::get('pendaftaranpeserta/edit/{id}', [PesertaController::class, 'edit'])->name('pendaftaranpeserta.edit');
 Route::put('pendaftaranpeserta/update/{id}', [PesertaController::class, 'update'])->name('pendaftaranpeserta.update');
 Route::delete('pendaftaranpeserta/destroy/{id}', [PesertaController::class, 'destroy'])->name('pendaftaranpeserta.destroy');
+
+
+Route::get('belajar-laravel', [BelajarController::class, 'index']);
+Route::get('siswa', [BelajarController::class, 'getSiswa']);
+Route::get('create', [BelajarController::class, 'create'])->name('siswa.create');
+Route::post('store', [BelajarController::class, 'store'])->name('siswa.store');
+
+
+Route::get('/', [LoginController::class, 'index']);
+Route::post('action-login', [LoginController::class, 'actionLogin'])->name('action-login');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
