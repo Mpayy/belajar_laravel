@@ -43,15 +43,16 @@
 <body>
 
     <!-- ======= Header ======= -->
-        @include('layouts.inc.header')
+    @include('layouts.inc.header')
 
     <!-- ======= Sidebar ======= -->
-        @include('layouts.inc.sidebar')
+    @include('layouts.inc.sidebar')
 
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>{{ $title ?? '' }}</h1>
+            {{-- <h1>{{ $title ?? '' }}</h1> --}}
+            <h1>@yield('title')</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -69,7 +70,7 @@
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-        @include('layouts.inc.footer')
+    @include('layouts.inc.footer')
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>

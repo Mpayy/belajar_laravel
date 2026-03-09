@@ -70,9 +70,10 @@
                                         <div class="alert alert-danger">{{ $errors->first() }}</div>
                                     @endif
 
-                                    <form class="row g-3 needs-validation" novalidate method="post" action="{{ route('action-login') }}">
+                                    <form class="row g-3 needs-validation" novalidate method="post"
+                                        action="{{ route('action-login') }}">
                                         @csrf
-  
+
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Email</label>
                                             <div class="input-group has-validation">

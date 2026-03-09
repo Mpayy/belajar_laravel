@@ -16,13 +16,14 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8'
         ]);
-        // jika user menginput
+        // jika user menginput email dan passwordnya benar
         if(Auth::attempt($validate)){
             $request->session()->regenerate();
             return redirect('/dashboard');
         }
         return redirect()->back()->withErrors([
-            'email' => 'Tolong periksa email dan password'
+            'email' => 'Please check your email and password'
+            // 'email' => 'Invalid Credential'
         ]);
     }
 
