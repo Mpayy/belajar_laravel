@@ -13,6 +13,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VolumeLimasController;
 use Illuminate\Support\Facades\Route;
@@ -88,4 +89,5 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::resource('user', UserController::class);
 Route::resource('role', RoleController::class);
+Route::resource('student', StudentController::class);
 Route::get('/dashboard', [DashboardController::class, 'index']);

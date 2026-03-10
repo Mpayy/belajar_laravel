@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         $title = "Data Student";
-        $student = Student::get(); // SELECT * FROM
+        $students = Student::get(); // SELECT * FROM
         return view('student.index', compact('title', 'students'));
     }
 
@@ -74,7 +74,7 @@ class StudentController extends Controller
     public function edit(string $id)
     {
         $title = "Edit role";
-        $role = Student::findOrFail($id); // kalau gagal dengan findOrFail() akan menghasilkan 404
+        $student = Student::findOrFail($id); // kalau gagal dengan findOrFail() akan menghasilkan 404
         return view('student.edit', compact('title','student'));
     }
 
@@ -108,7 +108,7 @@ class StudentController extends Controller
         $student->gender = $request->gender;
         $student->phone = $request->phone;
         $student->address = $request->address;
-        $student->image = $$imageName;
+        $student->image = $imageName;
         $student->save();
 
         Alert::success('Edit Success', 'Congratulations, your Student has been successfully edit.');

@@ -21,17 +21,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ( $students as $student )
+                            @foreach ($students as $student)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td><img src="{{ asset('storage/' . $student->image) }}" alt=""></td>
+                                    <td><img src="{{ asset('uploads/students/' . $student->image) }}" alt=""
+                                            width="80"></td>
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->phone }}</td>
-                                    <td>{{ $student->gender == 1 ? 'Male' : 'Female' }}</td>
+                                    <td>{{ $student->gender == '1' ? 'Male' : 'Female' }}</td>
                                     <td>
-                                        <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <form id="delete-form-{{ $student->id }}" action="{{ route('student.destroy', $student->id) }}" method="POST" class="d-inline">
+                                        <a href="{{ route('student.edit', $student->id) }}"
+                                            class="btn btn-primary btn-sm">Edit</a>
+                                        <form id="delete-form-{{ $student->id }}"
+                                            action="{{ route('student.destroy', $student->id) }}" method="POST"
+                                            class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm delete-btn">Delete</button>
