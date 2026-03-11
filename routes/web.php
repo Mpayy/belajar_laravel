@@ -7,6 +7,7 @@
 // put atau patch = merubah atau mengedit data
 // delete = menghapus data
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\BelajarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
@@ -90,4 +91,5 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::resource('user', UserController::class);
 Route::resource('role', RoleController::class);
 Route::resource('student', StudentController::class);
+Route::resource('attendance', AttendanceController::class);
 Route::get('/dashboard', [DashboardController::class, 'index']);

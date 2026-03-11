@@ -73,7 +73,7 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        $title = "Edit role";
+        $title = "Edit Student";
         $student = Student::findOrFail($id); // kalau gagal dengan findOrFail() akan menghasilkan 404
         return view('student.edit', compact('title','student'));
     }

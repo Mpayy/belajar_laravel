@@ -9,6 +9,15 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
+                            <label for="role" class="form-label">Role*</label>
+                            <select name="role_id" id="" class="form-control">
+                                <option value="">--Select Role--</option>
+                                @foreach ( $roles as $role )
+                                <option value="{{ $role->id }}" {{ $role->id == $user->role_id ? 'selected' : '' }}>{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="name" class="form-label">Name*</label>
                             <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required>
                         </div>

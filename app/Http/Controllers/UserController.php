@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -16,6 +17,8 @@ class UserController extends Controller
     {
         $title = "Data User";
         $users = User::get(); // SELECT * FROM users
+        // dd($users);
+        // return($users);
         return view('user.index', compact('title', 'users'));
     }
 
@@ -25,7 +28,8 @@ class UserController extends Controller
     public function create()
     {
         $title = "Create New User";
-        return view('user.create', compact('title'));
+        $roles = Role::all();
+        return view('user.create', compact('title', 'roles'));
     }
 
     /**
@@ -36,13 +40,15 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email', //users,email = nama table, nama field
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
+            'role_id' => 'nullable'
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
+            'role_id' => $request->role_id
         ]);
         Alert::success('Create Success', 'Congratulations, your account has been successfully created.');
         return redirect()->route('user.index');
@@ -63,7 +69,8 @@ class UserController extends Controller
     {
         $title = "Edit User";
         $user = User::find($id); // SELECT * FROM users WHERE id=$id
-        return view('user.edit', compact('title','user'));
+        $roles = Role::all();
+        return view('user.edit', compact('title', 'user', 'roles'));
     }
 
     /**

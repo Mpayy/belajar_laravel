@@ -32,16 +32,16 @@
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
     <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+		* Template Name: NiceAdmin
+		* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+		* Updated: Apr 20 2024 with Bootstrap v5.3.3
+		* Author: BootstrapMade.com
+		* License: https://bootstrapmade.com/license/
+		======================================================== -->
 </head>
 
 <body>
-@include('sweetalert::alert')
+    @include('sweetalert::alert')
     <!-- ======= Header ======= -->
     @include('layouts.inc.header')
 
@@ -87,30 +87,44 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-{{-- @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"]) --}}
+    {{-- @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"]) --}}
 
-<script>
-    $(document).on('click', '.delete-btn', function(e){
-        e.preventDefault();
-        var form = $(this).closest('form');
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if(result.isConfirmed){
-                form.submit();
-            }
-        })
-    });
-</script>
+    <script>
+        const imgInput = document.getElementById('image-input');
+    	const imgPreview = document.getElementById('img-preview');
+    
+    	imgInput.addEventListener('change', function(e) {
+    		const file = e.target.files[0];
+    		// const file = this.files[0];
+    		if (file) {
+    			const reader = new FileReader();
+    			reader.onload = function() {
+    							imgPreview.src = reader.result;
+    			}
+    			reader.readAsDataURL(file);
+    		}
+    	});
+    												$(document).on('click', '.delete-btn', function(e) {
+    																e.preventDefault();
+    																var form = $(this).closest('form');
+    																Swal.fire({
+    																				title: 'Are you sure?',
+    																				text: "You won't be able to revert this!",
+    																				icon: 'warning',
+    																				showCancelButton: true,
+    																				confirmButtonColor: '#3085d6',
+    																				cancelButtonColor: '#d33',
+    																				confirmButtonText: 'Yes, delete it!'
+    																}).then((result) => {
+    																				if (result.isConfirmed) {
+    																								form.submit();
+    																				}
+    																})
+    												});
+    </script>
 
 </body>
 
